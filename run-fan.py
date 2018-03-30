@@ -173,7 +173,7 @@ class Temperature(object):
             # need to turn fan on, but only if the fan is off
             if myFan.fanOff:
                 myFan.setFan(self.cpuTemperature, True, myPin)
-        elif self.cpuTemperature > self.stopTemperature:
+        elif self.cpuTemperature <= self.stopTemperature:
             # need to turn fan off, but only if the fan is on
             if not myFan.fanOff:
                 myFan.setFan(self.cpuTemperature, False, myPin)
