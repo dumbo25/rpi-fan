@@ -59,7 +59,7 @@
 #
 # After any changes to /lib/systemd/system/run-fan.service:
 #    sudo systemctl daemon-reload
-#    sudo systemctl enable sample.service
+#    sudo systemctl enable run-fan.service
 #    sudo reboot
 #
 # Ensure the run-fan.service in systemd is enabled and running:
