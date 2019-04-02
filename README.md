@@ -16,3 +16,5 @@ There is an instructable that describes the setup in detail (link needs to be ad
 
 run-fan.service should be copied to here: /lib/systemd/system/run-fan.service
 run-fan.py should be copied to here: /home/osmc/run-fan.py
+
+simple-fan.py is asimpler version and does not require a transistor
