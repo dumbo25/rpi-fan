@@ -46,7 +46,7 @@
 #   User=root
 #   Group=root
 #   Type=simple
-#   ExecStart=/usr/bin/python /home/pi/run-fan.py
+#   ExecStart=/usr/bin/python /home/pi/simple-fan.py
 #   Restart=Always
 #
 #   [Install]
