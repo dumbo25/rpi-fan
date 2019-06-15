@@ -61,7 +61,7 @@
 #    sudo reboot
 #
 # Ensure the run-fan.service in systemd is enabled and running:
-#    systemctl list-unit-files | grep enabled
+#    systemctl list-unit-files | grep enabled | grep simple
 #    systemctl | grep running | grep fan
 #    systemctl status simple-fan.service -l
 #
@@ -80,12 +80,17 @@ import RPi.GPIO as GPIO
 GPIOfan = 26
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(GPIOfan, GPIO.OUT)
+GPIO.setup(GPIOfan, GPIO.OUT, pull_up_down=GPIO.PUD_DOWN)
 
 while True:     # Loop forever
 
     # Read the current temperature
-    res = os.popen('vcgencmd measure_temp').readline()
+    # osmc requires path
+    res = os.popen('/opt/vc/bin/vcgencmd measure_temp').readline()
+    # other OS's do not require path or may use different path
+    # use $ which vcgencmd to find path
+    # res = os.popen('vcgencmd measure_temp').readline()
+
     temp = float((res.replace("temp=","").replace("'C\n","")))
 
     # print 'Temperature from vcgencmd: {}'.format(temp)
