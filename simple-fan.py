@@ -1,7 +1,7 @@
 #!/susr/bin/python
 
-# connect red lead to one pint to 3.3v pin (pin 1)
-# connect black lead to GPIO 4 (pin 7)
+# connect red lead to a 3.3v pin (e.g., pin 1)
+# connect black lead to GPIOfan (e.g., pin 7)
 
 # on NEMS run
 # $ sudo apt-get install python-rpi.gpio python3-rpi.gpio -y
@@ -17,7 +17,7 @@
 # and that isn't very much fun. Any fan can be used as long it can operate
 # at 3.3V
 #
-# run-fan was tested on a raspberry pi 3b+ running nems linux
+# run-fan was tested on a raspberry pi 3b+ running nems linux and kodi on OSMC
 #
 #########################
 
@@ -77,8 +77,10 @@ import signal
 import sys
 import RPi.GPIO as GPIO
 
+GPIOfan = 26
+
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(4, GPIO.OUT)
+GPIO.setup(GPIOfan, GPIO.OUT)
 
 while True:     # Loop forever
 
@@ -90,12 +92,13 @@ while True:     # Loop forever
 
     # Control the fan
     if temp > 65.0:
-        # print 'Turning on GPIO 4'
-        GPIO.output(4, False)
+        # print 'Turning on fan = ' + str(GPIOfan)
+        GPIO.output(GPIOfan, False)
     else:
-        # print 'Turning off GPIO 4'
-        GPIO.output(4, True)
+        # print 'Turning off fan = ' + str(GPIOfan)
+        GPIO.output(GPIOfan, True)
 
     # Wait before the next iteration
+
     sleep(10)
 
