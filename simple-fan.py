@@ -47,6 +47,7 @@
 #   Group=root
 #   Type=simple
 #   ExecStart=/usr/bin/python /home/pi/simple-fan.py
+#delete this line: on OSMC use Restart=on-failure instead of Restart=Always
 #   Restart=Always
 #
 #   [Install]
@@ -98,6 +99,8 @@ while True:     # Loop forever
     # Control the fan
     if temp > 65.0:
         # print 'Turning on fan = ' + str(GPIOfan)
+        # The red fan pin is connected to 3.3V and the GPIOfan pin is the black pin on the fan
+        # this doesn't seem to make any sense, but it works
         GPIO.output(GPIOfan, False)
     else:
         # print 'Turning off fan = ' + str(GPIOfan)
