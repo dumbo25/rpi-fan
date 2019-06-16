@@ -80,7 +80,7 @@ import RPi.GPIO as GPIO
 GPIOfan = 26
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(GPIOfan, GPIO.OUT, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(GPIOfan, GPIO.OUT)
 
 while True:     # Loop forever
 
