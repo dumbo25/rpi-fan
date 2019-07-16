@@ -1,6 +1,6 @@
 #!/susr/bin/python
 
-# connect red lead to a ground pin (e.g., pin 6, 9, 39)
+# connect red lead to a 3.3v pin (e.g., pin 1, 17)
 # connect black lead to GPIOfan (e.g., pin 7)
 
 # on NEMS run
