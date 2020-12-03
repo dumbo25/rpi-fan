@@ -1,7 +1,9 @@
 #!/susr/bin/python
 
-# connect red lead to a 3.3v pin (e.g., pin 1, 17)
-# connect black lead to GPIOfan (e.g., pin 7)
+# >>> THIS SCRIPT ONLY WORKS with a 5v 1.2Amp Fan <<<
+
+# connect red lead to a 3.3v pin (e.g., physical pin 1 or 17)
+# connect black lead to GPIOfan (e.g., physical pin 7, GPIO 4)
 
 # on NEMS run
 # $ sudo apt-get install python-rpi.gpio python3-rpi.gpio -y
@@ -47,7 +49,7 @@
 #   Group=root
 #   Type=simple
 #   ExecStart=/usr/bin/python /home/pi/simple-fan.py
-#delete this line: on OSMC use Restart=on-failure instead of Restart=Always
+# >>> Replace the following line: on OSMC or Raspberry Pi OS with Restart=on-failure instead of Restart=Always
 #   Restart=Always
 #
 #   [Install]
@@ -79,6 +81,7 @@ import sys
 import RPi.GPIO as GPIO
 
 GPIOfan = 26
+TurnOnTemp = 65.0
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIOfan, GPIO.OUT)
@@ -97,7 +100,7 @@ while True:     # Loop forever
     # print 'Temperature from vcgencmd: {}'.format(temp)
 
     # Control the fan
-    if temp > 65.0:
+    if temp > TurnOnTemp:
         # print 'Turning on fan = ' + str(GPIOfan)
         # The red fan pin is connected to 3.3V and the GPIOfan pin is the black pin on the fan
         # this doesn't seem to make any sense, but it works
@@ -109,4 +112,3 @@ while True:     # Loop forever
     # Wait before the next iteration
 
     sleep(10)
-
