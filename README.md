@@ -12,7 +12,7 @@ The fan I used came with a MiuZei case.
 
 run-fan was tested on a raspberry pi running kodi on osmc using a 3.3v. However, it can be used on any Raspberry Pi by changing the service to use the correct username and copy run-fan.py to /home/username, instead of /home/osmc
 
-There is an instructable that describes the setup in detail (link needs to be added)
+There is an instructable that describes the setup in detail (link: https://sites.google.com/site/cartwrightraspberrypiprojects/home/steps/simple-raspberry-pi-fan)
 
 run-fan.service should be copied to here: /lib/systemd/system/run-fan.service
 run-fan.py should be copied to here: /home/osmc/run-fan.py
